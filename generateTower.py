@@ -25,6 +25,27 @@ class JengaTower:
     def __repr__(self):
         return repr(self.layers)
 
+    def render(self):
+        x = 0
+        y = 0
+        for layer in self.layers:
+            for piece in layer.pieces:
+                print(f"\033[{y};{x}H", end="") #ANSI escape code learnt from the video ;)
+                print(piece, end="")
+                x += len(str(piece)) + 1
+            x = 0
+            y = y+ 1
+        print()
+
+
+class JengaPiece:
+    def __init__(self):
+        self.left = 0
+        self.middle = 0
+        self.right = 0
+
+    def __repr__(self):
+        return f"[{self.left},{self.middle},{self.right}]"
 
 # height = 3
 # tower = JengaTower(height)
